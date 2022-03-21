@@ -66,3 +66,28 @@ kotlinOptions {
 jvmTarget = '1.8'
 }
 } ]
+
+
+# Connexion à Internet
+Vous utiliserez la bibliothèque [Retrofit] pour communiquer avec le service Web Mars et [afficher la réponse JSON brute 
+sous forme de fichier String]. L'espace réservé TextView affichera soit la chaîne de réponse JSON renvoyée, soit un message indiquant une erreur de connexion.
+
+[Retrofit] crée une API réseau pour l'application basée sur le contenu du service Web. 
+Il récupère les data du service Web et les achemine via une bibliothèque de conversion distincte qui 
+sait comment décoder les data et les renvoyer sous la forme de objects tels que String.
+
+La mise à niveau inclut une prise en charge intégrée des formats de données courants tels que [XML et JSON].
+[Retrofit] crée finalement le code pour appeler et utiliser ce service pour vous, y compris des détails critiques 
+tels que l'exécution des requêtes sur des [threads d'arrière-plan].
+
+ # Implémentez l'API du service Retrofit en procédant comme suit:
+[1.] Créez une [network layer] (couche réseau) , la MarsApiService class.
+[2.] Créez un [Retrofit object] avec l'URL de base et la [converter factory] .
+[3.] Créez une [interface] qui explique comment Retrofit communique avec notre serveur Web.
+[4.] Créez un [Retrofit service] et exposez l'instance au service API au reste de l'application.
+ 
+ # Mettez en œuvre les étapes ci-dessus :
+[1.] Create a new package called network
+[2.] Create a new Kotlin file under the new package network. Name it MarsApiService.
+
+
