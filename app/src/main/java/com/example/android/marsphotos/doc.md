@@ -91,3 +91,44 @@ tels que l'exécution des requêtes sur des [threads d'arrière-plan].
 [2.] Create a new Kotlin file under the new package network. Name it MarsApiService.
 
 
+#Call the web service in OverviewViewModel
+#ViewModelScope
+[ViewModelScope] est la portée de la [coroutine] intégrée définie pour chacun [ViewModel] dans votre application. 
+Toute coroutine lancée dans cette portée est automatiquement annulée si la ViewModelest effacée.
+
+
+# Gestion des exceptions
+Les [exceptions] sont des erreurs qui peuvent se produire pendant [l'exécution (pas au moment de la compilation)]
+et terminer l'application brusquement sans en avertir l'utilisateur.
+La gestion des exceptions est un mécanisme par lequel vous empêchez l'application de se terminer brusquement et gérez-la de manière conviviale.
+
+Exemples de problèmes potentiels lors de la connexion à un serveur :
+[1.] L'URL ou l'URI utilisé dans l'API est incorrect.
+[2.] Le serveur est indisponible et l'application n'a pas pu s'y connecter.
+[3.] Problème de latence du réseau.
+[4.] Mauvaise ou pas de connexion Internet sur l'appareil.
+
+Vous pouvez utiliser un [try-catch] bloc pour gérer l'exception lors de l'exécution.
+try {
+// some code that can cause an exception.
+}
+catch (e: SomeException) {
+// sera exécuté pour récupérer de l'erreur au lieu de mettre fin brusquement à l'application.
+}
+
+
+# JSON
+Les données demandées sont généralement formatées dans l'un des formats de données courants 
+tels que [XML ou JSON]. Chaque appel renvoie des données structurées et votre application doit connaître
+cette structure afin de lire les données de la réponse.
+
+ #Structure de l'exemple de réponse JSON :
+[1.] La réponse JSON est un [Array], indiqué par les [crochets]. Le tableau contient des [JSON Objects].
+[2.] Les [JSON Objects]  sont entourés [ d'accolades {} ].
+[3.] Chaque [JSON Objects] contient un ensemble de paires [name-value] séparées par une [virgule].
+[4.] Le [name et la value] d'une paire sont séparés par [deux points].
+[5.] Les [name] sont entourés de [guillemets].
+[6.] Les [Values] can be numbers, strings, a boolean, an array, an object (JSON object), or null.
+
+
+# MOSHI 

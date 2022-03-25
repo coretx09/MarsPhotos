@@ -31,7 +31,7 @@ interface MarsApiService {
     Lorsque la getPhotos()méthode est invoquée, Retrofit ajoute le point de terminaison photosà l'URL de base
      */
     @GET("photos")
-    fun getPhotos(): String
+    suspend fun getPhotos(): String
 }
 
 /*
