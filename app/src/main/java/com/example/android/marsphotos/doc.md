@@ -65,10 +65,10 @@ targetCompatibility JavaVersion.VERSION_1_8
 kotlinOptions {
 jvmTarget = '1.8'
 }
-} ]
+}]
 
 
-# Connexion à Internet
+# Connexion à Internet (RETROFIT)
 Vous utiliserez la bibliothèque [Retrofit] pour communiquer avec le service Web Mars et [afficher la réponse JSON brute 
 sous forme de fichier String]. L'espace réservé TextView affichera soit la chaîne de réponse JSON renvoyée, soit un message indiquant une erreur de connexion.
 
@@ -132,3 +132,11 @@ cette structure afin de lire les données de la réponse.
 
 
 # MOSHI 
+External library qui est un analyseur JSON Android qui [convertit une chaîne JSON en objets Kotlin.] 
+[Retrofit] a un convertisseur qui fonctionne avec [Moshi], c'est donc une excellente bibliothèque pour vos besoins ici.
+
+ #Ajouter des dépendances à la bibliothèque Moshi:
+[
+// Retrofit with Moshi Converter
+implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+]

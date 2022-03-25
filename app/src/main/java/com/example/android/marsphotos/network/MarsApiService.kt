@@ -1,7 +1,9 @@
 package com.example.android.marsphotos.network
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import retrofit2.http.GET
 
@@ -9,6 +11,12 @@ import retrofit2.http.GET
 private const val BASE_URL =
     "https://android-kotlin-fun-mars-server.appspot.com"
 
+/**
+ * Build the Moshi object with Kotlin adapter factory that Retrofit will be using.
+ */
+private val moshi = Moshi.Builder()
+    .add(KotlinJsonAdapterFactory())
+    .build()
 
 /*
    générateur Retrofit pour construire et créer un objet Retrofit.
@@ -17,7 +25,7 @@ private const val BASE_URL =
    Enfin, appelez build() pour créer  Retrofit Object.
  */
 private val retrofit = Retrofit.Builder()
-    .addConverterFactory(ScalarsConverterFactory.create())
+    .addConverterFactory(MoshiConverterFactory.create(moshi))
     .baseUrl(BASE_URL)
     .build()
 
@@ -31,7 +39,7 @@ interface MarsApiService {
     Lorsque la getPhotos()méthode est invoquée, Retrofit ajoute le point de terminaison photosà l'URL de base
      */
     @GET("photos")
-    suspend fun getPhotos(): String
+    suspend fun getPhotos(): List<MarsPhoto>
 }
 
 /*
